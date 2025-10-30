@@ -12,7 +12,32 @@
 </head>
 
 <body>
-    
+    <!-- Preloader Screen -->
+<div class="preloader-screen" id="preloaderScreen">
+  <div class="preloader-header">
+    <img src="assets/footer/sf-logo-w.webp" alt="Nairoreel Logo" class="preloader-logo-img">
+    <div class="brand-text">
+      <span class="brand-line">Nairoreel</span>
+      <span class="brand-line">Productions</span>
+    </div>
+  </div>
+
+  <!-- Switch -->
+  <label class="switch">
+    <input class="switch__input" type="checkbox" role="switch" id="powerSwitch">
+    <span class="switch__lever-shadow"></span>
+    <span class="switch__lever">
+      <span class="switch__lever-sides"></span>
+      <span class="switch__lever-half-top"></span>
+      <span class="switch__lever-half-bottom"></span>
+    </span>
+    <span class="switch__label">Power</span>
+  </label>
+
+  <div class="power-text">Illuminate our world</div>
+</div>
+
+<div id="mainContent"></div>
     
     <nav>
         <div class="nav-container">
@@ -186,10 +211,52 @@
             © 2025 Nairoreel Productions. All rights reserved.
         </div>
     </footer>
+
+    </div>
     
     <!-- GSAP Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     
+    <script>
+  const preloaderScreen = document.getElementById('preloaderScreen');
+  const mainContent = document.getElementById('mainContent');
+  const powerSwitch = document.getElementById('powerSwitch');
+  const heroVideo = document.querySelector('.hero-video-bg video');
+
+  let videoReady = false;
+
+  // Detect when hero video can play
+  heroVideo.addEventListener('canplaythrough', () => {
+    videoReady = true;
+  });
+
+  // Fallback timeout in case video is slow
+  setTimeout(() => { videoReady = true; }, 5000);
+
+  powerSwitch.addEventListener('change', function() {
+    if (this.checked) {
+      setTimeout(() => {
+        if (videoReady) {
+          transitionToMain();
+        } else {
+          const interval = setInterval(() => {
+            if (videoReady) {
+              clearInterval(interval);
+              transitionToMain();
+            }
+          }, 200);
+        }
+      }, 500);
+    }
+  });
+
+  function transitionToMain() {
+    preloaderScreen.classList.add('hidden');
+    setTimeout(() => mainContent.classList.add('visible'), 1000);
+    setTimeout(() => preloaderScreen.remove(), 2200);
+  }
+</script>
+
     <!-- Main Scripts -->
     <script src="js/main.js"></script>
 </body>
