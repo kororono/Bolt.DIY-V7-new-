@@ -81,7 +81,7 @@
     background-color: var(--accent);
     color: white;
     padding: 18px 60px;
-    border-radius: 25px;
+    border-radius: 15px;
     font-weight: 600;
     font-size: 1.1rem;
     text-decoration: none;
@@ -100,7 +100,7 @@
 /* ========================================
    NAVIGATION HIGHLIGHT - "Our Work" Card
    ======================================== */
-.nav-links a.nav-highlight {
+/*.nav-links a.nav-highlight {
     background: var(--accent);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -108,7 +108,7 @@
     padding: 15px 20px;
     border-radius: 10px;
     transition: none;
-}
+}*/
 
 
 /* ========================================
