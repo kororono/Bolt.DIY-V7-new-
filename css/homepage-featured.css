@@ -91,10 +91,9 @@
 }
 
 .hero-content .cta-button:hover {
-    background-color: var(--background);
-    color: var(--foreground);
+    background-color: var(--foreground);
+    color: var(--background);
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(234, 24, 33, 0.3);
 }
 
 /* ========================================
