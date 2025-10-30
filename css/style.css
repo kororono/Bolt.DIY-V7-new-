@@ -493,8 +493,8 @@ header, section {
 /* Call to Action */
 .cta-button {
     display: inline-block;
-    background-color: var(--foreground);
-    color: var(--background);
+    background-color: var(--accent);
+    color: var(--foreground);
     padding: 15px 55px; /* Made button slightly larger */
     border-radius: 48px;
     font-weight: 500;
@@ -506,8 +506,8 @@ header, section {
 }
 
 .cta-button:hover {
-    background-color: var(--accent);
-    color: var(--foreground);
+    background-color: var(--foreground);
+    color: var(--background);
     transform: translateY(-2px);
 }
 
