@@ -7,66 +7,119 @@
     <title>Nairoreel Productions — Visual Storytelling Studio</title>
     <meta name="description" content="Visual storytelling for innovative brands through 3D animation, film making, and photography.">
     <link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/homepage-carousel.css">
+    <!-- Remove carousel CSS, add new featured work CSS -->
+    <link rel="stylesheet" href="css/homepage-featured.css">
 </head>
 
 <body>
-<!-- Homepage Video Background -->
-<div class="homepage-video-background">
-    <video autoplay loop muted playsinline>
-        <source src="assets/home/home-bg.webm" type="video/webm">
-    </video>
-    <div class="video-overlay"></div>
-</div>
     <!-- Page Overlay for darkening effect -->
     <div class="page-overlay"></div>
     
     <nav>
-    <div class="nav-container">
-        <div class="nav-logo">
-            <a href="index.html">
-                <span>Nairoreel Productions</span>
-                <span>Nairoreel Productions</span>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <span>Nairoreel Productions</span>
+                    <span>Nairoreel Productions</span>
+                </a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links">
+                <a href="our-work.html" class="nav-highlight"><span>Our Work</span><span>Our Work</span></a>
+                <a href="us.html"><span>Us</span><span>Us</span></a>
+                <a href="process.html"><span>Process</span><span>Process</span></a>
+                <a href="contact.html"><span>Contact</span><span>Contact</span></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Video Background -->
+    <header class="hero-section">
+        <div class="hero-video-bg">
+            <video autoplay loop muted playsinline>
+                <source src="assets/home/home-bg.webm" type="video/webm">
+                <!-- Add fallback sources if needed -->
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Visual storytelling for innovative brands</h1>
+            <p>We are Nairoreel Productions — a creative studio crafting captivating visuals through 3D, cinematography, and motion storytelling.</p>
+            <a href="inquiry.html" class="cta-button">Start Your Project</a>
+        </div>
+    </header>
+
+    <div class="divider"></div>
+
+    <!-- Featured Work Section -->
+    <section id="featured-work">
+        <h2>Featured Work</h2>
+        <div class="featured-grid">
+            <!-- Project 1 -->
+            <a href="projects/nairobi fashion week.html" class="featured-item">
+                <img src="assets/projects/nfw/nfw-thumb.webp" alt="Nairobi Fashion Week">
+                <div class="featured-overlay"></div>
+                <div class="featured-info">
+                    <h3 class="featured-title">Nairobi Fashion Week</h3>
+                    <p class="featured-desc">Fashion Film Production</p>
+                </div>
+            </a>
+            
+            <!-- Project 2 -->
+            <a href="projects/kfc.html" class="featured-item">
+                <img src="assets/projects/kfc/KFC-thumb.webp" alt="KFC">
+                <div class="featured-overlay"></div>
+                <div class="featured-info">
+                    <h3 class="featured-title">KFC</h3>
+                    <p class="featured-desc">3D Animation Campaign</p>
+                </div>
+            </a>
+            
+            <!-- Project 3 -->
+            <a href="projects/raila-tribute.html" class="featured-item">
+                <img src="assets/projects/raila/raila-thumb.webp" alt="Raila Tribute">
+                <div class="featured-overlay"></div>
+                <div class="featured-info">
+                    <h3 class="featured-title">Raila Tribute</h3>
+                    <p class="featured-desc">3D Motion Graphics</p>
+                </div>
+            </a>
+            
+            <!-- Project 4 -->
+            <a href="projects/reload.html" class="featured-item">
+                <img src="assets/projects/reload/reload-thumb.webp" alt="RELOAD">
+                <div class="featured-overlay"></div>
+                <div class="featured-info">
+                    <h3 class="featured-title">RELOAD</h3>
+                    <p class="featured-desc">Brand Visual Identity</p>
+                </div>
+            </a>
+            
+            <!-- Project 5 - Placeholder -->
+            <a href="#" class="featured-item">
+                <img src="assets/projects/placeholder1.jpg" alt="Coming Soon">
+                <div class="featured-overlay"></div>
+                <div class="featured-info">
+                    <h3 class="featured-title">Coming Soon</h3>
+                    <p class="featured-desc">New Project</p>
+                </div>
+            </a>
+            
+            <!-- Project 6 - Placeholder -->
+            <a href="#" class="featured-item">
+                <img src="assets/projects/placeholder2.jpg" alt="Coming Soon">
+                <div class="featured-overlay"></div>
+                <div class="featured-info">
+                    <h3 class="featured-title">Coming Soon</h3>
+                    <p class="featured-desc">New Project</p>
+                </div>
             </a>
         </div>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="nav-links">
-            <a href="our-work.html"><span>Our Work</span><span>Our Work</span></a>
-            <a href="us.html"><span>Us</span><span>Us</span></a>
-            <a href="process.html"><span>Process</span><span>Process</span></a>
-            <a href="contact.html"><span>Contact</span><span>Contact</span></a>
-        </div>
-    </div>
-</nav>
-
-    <section id="featured-work">
-    <h1>Visual storytelling for innovative brands</h1>
-    
-    <!-- 3D Carousel Container -->
-    <div class="carousel-wrapper">
-        <div class="carousel-deck" id="carousel-deck">
-            <!-- Cards generated by JS -->
-        </div>
-        
-        <!-- Navigation Buttons -->
-        <div class="carousel-nav">
-            <button id="carousel-prev" class="carousel-arrow" aria-label="Previous Project">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="currentColor">
-                    <path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/>
-                </svg>
-            </button>
-            <button id="carousel-next" class="carousel-arrow" aria-label="Next Project">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="currentColor">
-                    <path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/>
-                </svg>
-            </button>
-        </div>
-    </div>
-</section>
+    </section>
 
     <div class="divider"></div>
 	
@@ -75,58 +128,37 @@
         <div class="bento-grid">
             <a href="our-work.html#film" class="bento-item">
                 <h3 class="bento-title">Film Making</h3>
-                <p class="bento-desc">Cinematic storytelling that transforms viewers into customers. Ready for your close-up?</p>
+                <p class="bento-desc">Cinematic storytelling that transforms viewers into customers.</p>
             </a>
-            <a href="our-work.html#3d" class="bento-item">
+            <a href="our-work.html#animation" class="bento-item">
                 <h3 class="bento-title">3D Animation</h3>
-                <p class="bento-desc">Bringing the impossible to life through pixels and imagination. Gravity optional.(>_<)</p>
+                <p class="bento-desc">Dynamic visuals that bring ideas to life.</p>
             </a>
             <a href="our-work.html#photography" class="bento-item">
                 <h3 class="bento-title">Photography</h3>
-                <p class="bento-desc">We don't just take photos. We capture moments that make the memories unforgettable.</p>
+                <p class="bento-desc">Stunning images that capture your brand essence.</p>
             </a>
         </div>
-			
-       <div class="pricing-info">
-    <h1><strong>Pricing:</strong></h1> 
-    <p class="pricing-text">Custom quotes based on project scope — reach out for a tailored proposal.</p>
-</div>
-
     </section>
 
-    <div class="divider"></div>
-
-    <section id="contact">
-        <h2>Let's Talk</h2>
-        <p>Ready to elevate your brand through compelling visual storytelling? We're just an email away.</p>
-        <p>Connect with us at <a href="mailto:nairoreelproductions@gmail.com">nairoreelproductions@gmail.com</a></p>
-         <a href="../inquiry.html" class="cta-button">Inquire</a>
-    </section>
-
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <img src="assets/footer/sf-logo-w.webp" alt="Nairoreel Productions Logo" class="footer-logo">
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3>Nairoreel Productions</h3>
+                <p>Visual storytelling for innovative brands.</p>
             </div>
-            <div class="footer-col">
-                <h3>Services</h3>
-                <ul>
-                    <li><a href="our-work.html#film">Film Making</a></li>
-                    <li><a href="our-work.html#3d">3D Animation</a></li>
-                    <li><a href="our-work.html#photography">Photography</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h3>Pages</h3>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
                 <ul>
                     <li><a href="our-work.html">Our Work</a></li>
-                    <li><a href="us.html">Us</a></li>
+                    <li><a href="us.html">About Us</a></li>
                     <li><a href="process.html">Process</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
-            <div class="footer-col">
-                <h3>Connect</h3>
-                <ul class="social-icons">
+            <div class="footer-contact">
+                <h4>Connect</h4>
+                <ul class="social-links">
                     <li><a href="mailto:nairoreelproductions@gmail.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20" fill="currentColor"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg></a></li>
                     <li><a href="https://instagram.com/nairoreel.productions" target="_blank" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20" fill="currentColor"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a></li>
                     <li><a href="#" target="_blank" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="20" height="20" fill="currentColor"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg></a></li>
@@ -142,8 +174,7 @@
     <!-- GSAP Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     
-    <!-- Carousel Script -->
+    <!-- Main Scripts -->
     <script src="js/main.js"></script>
-	<script src="js/homepage-carousel.js"></script>
 </body>
 </html>
