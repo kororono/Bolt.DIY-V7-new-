@@ -594,61 +594,63 @@
 
     <!-- INLINED PRELOADER SCRIPT -->
     <script>
-    // Get references to the DOM elements
-    const powerSwitch = document.getElementById('powerSwitch');
-    const preloaderScreen = document.getElementById('preloaderScreen');
-    const mainContent = document.getElementById('mainContent');
-    const heroVideo = document.getElementById('heroVideo');
+        // Get references to the DOM elements
+        const powerSwitch = document.getElementById('powerSwitch');
+        const preloaderScreen = document.getElementById('preloaderScreen');
+        const mainContent = document.getElementById('mainContent');
+        const heroVideo = document.getElementById('heroVideo'); // Get the video
 
-    let assetsReady = false;
+        let assetsReady = false;
 
-    // Check if video is already loaded
-    if (heroVideo.readyState >= 4) {
-        assetsReady = true;
-    } else {
-        heroVideo.addEventListener('canplaythrough', () => {
+        // Check if video is already loaded (e.g., from cache)
+        // readyState 4 means 'HAVE_ENOUGH_DATA'
+        if (heroVideo.readyState >= 4) {
             assetsReady = true;
-        }, { once: true });
-    }
-
-    // Handle switch activation
-    powerSwitch.addEventListener('change', function() {
-        if (this.checked) {
-            setTimeout(() => {
-                if (assetsReady) {
-                    transitionToMain();
-                } else {
-                    const checkInterval = setInterval(() => {
-                        if (assetsReady) {
-                            clearInterval(checkInterval);
-                            transitionToMain();
-                        }
-                    }, 100);
-                }
-            }, 600);
+        } else {
+            // Listen for the 'canplaythrough' event
+            heroVideo.addEventListener('canplaythrough', () => {
+                assetsReady = true;
+            }, { once: true }); // Use { once: true } to remove listener after firing
         }
-    });
 
-    function transitionToMain() {
-        // Fade out preloader
-        preloaderScreen.classList.add('hidden');
-        
-        // ⭐ IMPORTANT: Immediately enable pointer events
-        mainContent.style.pointerEvents = 'auto';
-        
-        // Show main content after a pause
-        setTimeout(() => {
-            mainContent.classList.add('visible');
-        }, 1200);
-        
-        // Remove preloader from DOM after transition
-        setTimeout(() => {
-            preloaderScreen.style.display = 'none';
-        }, 2400);
-    }
-</script>
+        // Handle switch activation
+        powerSwitch.addEventListener('change', function() {
+            if (this.checked) {
+                // Small delay to let the switch animation complete
+                setTimeout(() => {
+                    // Check if assets are ready
+                    if (assetsReady) {
+                        transitionToMain();
+                    } else {
+                        // If assets aren't ready, wait for them.
+                        // The 'canplaythrough' listener above will set assetsReady = true
+                        const checkInterval = setInterval(() => {
+                            if (assetsReady) {
+                                clearInterval(checkInterval);
+                                transitionToMain();
+                            }
+                        }, 100); // Check every 100ms
+                    }
+                }, 600); // Let switch animation play
+            }
+        });
+
+        function transitionToMain() {
+            // Fade out preloader
+            preloaderScreen.classList.add('hidden');
+            
+            // Show main content after a pause
+            setTimeout(() => {
+                mainContent.classList.add('visible');
+            }, 1200); // 1.2s delay for a smoother feel
+            
+            // Remove preloader from DOM after transition
+            setTimeout(() => {
+                preloaderScreen.style.display = 'none';
+            }, 2400); // 1.2s delay + 1.2s content transition
+        }
+    </script>
     <!-- Main Scripts -->
     <script src="js/main.js"></script>
-    
 </body>
 </html>
