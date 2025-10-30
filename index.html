@@ -2,16 +2,18 @@
 <html lang="en">
 
 <head>
+    <meta name="theme-color" content="#0a0a0a">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nairoreel Productions — Visual Storytelling Studio</title>
     <meta name="description" content="We are Nairoreel Productions — a creative studio crafting captivating visuals through 3D, cinematography, and motion storytelling.">
     <link rel="stylesheet" href="css/style.css">
-    <!-- Remove carousel CSS, add new featured work CSS -->
     <link rel="stylesheet" href="css/homepage-featured.css">
 
-    <!-- STYLES FOR SWITCH PRELOADER -->
     <style>
+     html {
+         background-color: #0a0a0a !important; /* Forces the very root to be black */
+        }
         * {
             /* Apply box-sizing to all elements for consistency */
             box-sizing: border-box;
@@ -39,6 +41,7 @@
             line-height: 1.5;
         }
         
+        /* NOTE: The background-color for the body is now set inline in the <body> tag to prevent white flash. */
         .preloader-screen body {
             background-color: var(--bg);
             color: var(--fg);
@@ -80,7 +83,7 @@
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
-            margin-bottom: 2.5rem; /* Space between header and switch */
+            margin-bottom: 0.5rem; /* Space between header and switch */
             opacity: 0;
             animation: fadeIn 1s ease-out 0.5s forwards;
             width: 100%; /* Ensure it takes full width for centering */
@@ -89,20 +92,21 @@
         /* NEW STYLE FOR THE IMAGE LOGO */
         .preloader-logo-img {
             width: auto; /* Let height control */
-            height: 60px; /* You can adjust this height */
+            height: 150px; /* You can adjust this height */
             max-width: 200px; /* Prevent it from being too wide */
             object-fit: contain;
         }
 
-        /* Power Text */
+        /* Power Text - ENSURED ANIMATION PROPERTIES ARE CORRECT */
         .power-text {
             font-size: 0.9rem;
             letter-spacing: 0.2em;
             color: #666;
             text-transform: uppercase;
             opacity: 0;
-            animation: fadeInPulse 2s ease-out 1s forwards;
-            margin-top: 1.5rem; /* Space below switch */
+            /* Animation from prototype: fadeInPulse 2s ease-out 1s forwards */
+            animation: fadeInPulse 2s ease-out 1s forwards; /* Corrected to match prototype */
+            margin-top: 3rem; /* Space below switch */
         }
 
         @keyframes fadeIn {
@@ -115,15 +119,21 @@
             100% { opacity: 0.3; }
         }
         
-        /* Switch Styles */
+        /* Switch Styles (Unchanged) */
         .switch,
         .switch__input {
             -webkit-tap-highlight-color: transparent;
         }
         
         .switch {
-            /* Changed to darker color */
-            background-color: var(--switch-bg);
+    /* *** ADDED FOR FADE-IN ANIMATION *** */
+    opacity: 0; 
+    /* The switch should fade in after the logo, but before the "Illuminate..." text. */
+    /* fadeInPulse starts at 1s, so let's start the switch at 0.75s */
+    animation: fadeIn 1s ease-out 0.75s forwards; 
+
+    /* Changed to darker color */
+    background-color: var(--switch-bg);
             border-radius: 0.375em;
             box-shadow:
                 0 4.375em 2em var(--switch-bg-dark) inset,
@@ -132,8 +142,8 @@
             margin: 0; /* Removed margin: auto */
             position: relative;
             transition:
-                background-color var(--trans-dur) var(--trans-timing),
-                box-shadow var(--trans-dur) var(--trans-timing);
+        background-color var(--trans-dur) var(--trans-timing),
+        box-shadow var(--trans-dur) var(--trans-timing);
             width: 3.75em;
             height: 8.75em;
         }
@@ -296,7 +306,7 @@
             transform-origin: 0 0;
         }
         
-        /* `:checked` state - LED turns RED */
+        /* `:checked` state - LED turns RED (Unchanged) */
         .switch__input:checked ~ .switch__lever .switch__lever-half-top {
             background-color: var(--switch-bg); /* Adjusted */
             transform: rotateX(35deg);
@@ -330,22 +340,23 @@
             transform: skewX(0) scaleY(0.85);
         }
 
-        /* Main Content Wrapper */
+        /* Main Content Wrapper - FIXED FOR Z-DEPTH ANIMATION */
         .main-content {
-            position: relative; /* Changed from fixed to relative for natural flow */
+            position: fixed; /* CHANGED from relative to fixed for z-depth animation */
             width: 100%;
             height: 100%;
             opacity: 0;
             transform: scale(0.95); /* Start slightly smaller */
             transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
-            overflow: hidden; /* Hide overflow initially */
+            overflow-y: auto; /* Allows scrolling on the fixed layer */
+            -webkit-overflow-scrolling: touch; /* For smoother iOS scrolling */
         }
 
         .main-content.visible {
             opacity: 1;
             transform: scale(1);
             pointer-events: auto;
-            overflow: visible; /* Allow scrolling once visible */
+            /* overflow is now managed by overflow-y: auto */
         }
 
         /* Animate-in classes for hero content (from prototype) */
@@ -377,18 +388,14 @@
     </style>
 </head>
 
-<body>
+<body style="background-color: #0a0a0a;">
 
-    <!-- PRELOADER SCREEN -->
     <div class="preloader-screen" id="preloaderScreen">
         
-        <!-- Header: Logo -->
         <div class="preloader-header">
-            <!-- Replaced SVG/Text with your site's logo -->
             <img src="assets/footer/sf-logo-w.webp" alt="Nairoreel Productions Logo" class="preloader-logo-img">
         </div>
         
-        <!-- Power Switch -->
         <label class="switch">
             <input class="switch__input" type="checkbox" role="switch" id="powerSwitch">
             <span class="switch__lever-shadow"></span>
@@ -400,7 +407,6 @@
             <span class="switch__label">Power</span>
         </label>
         
-        <!-- Creative Text -->
         <div class="power-text">Illuminate our world</div>
     </div>
     <!-- END PRELOADER SCREEN -->
