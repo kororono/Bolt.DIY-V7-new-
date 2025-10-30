@@ -1171,11 +1171,11 @@ footer {
         z-index: 150;
         gap: 20px; /* Adjusted gap for mobile */
 
-        /* 🧊 Frosted glass look *
+        /* 🧊 Frosted glass look */
         background: rgba(10, 10, 10, 0.85);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        border-left: 0px solid rgba(255, 255, 255, 0.08);*/
+        border-left: 0px solid rgba(255, 255, 255, 0.08);
     }
 
     .nav-links.active {
