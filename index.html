@@ -123,8 +123,14 @@
         }
         
         .switch {
-            /* Changed to darker color */
-            background-color: var(--switch-bg);
+    /* *** ADDED FOR FADE-IN ANIMATION *** */
+    opacity: 0; 
+    /* The switch should fade in after the logo, but before the "Illuminate..." text. */
+    /* fadeInPulse starts at 1s, so let's start the switch at 0.75s */
+    animation: fadeIn 1s ease-out 0.75s forwards; 
+
+    /* Changed to darker color */
+    background-color: var(--switch-bg);
             border-radius: 0.375em;
             box-shadow:
                 0 4.375em 2em var(--switch-bg-dark) inset,
@@ -133,8 +139,8 @@
             margin: 0; /* Removed margin: auto */
             position: relative;
             transition:
-                background-color var(--trans-dur) var(--trans-timing),
-                box-shadow var(--trans-dur) var(--trans-timing);
+        background-color var(--trans-dur) var(--trans-timing),
+        box-shadow var(--trans-dur) var(--trans-timing);
             width: 3.75em;
             height: 8.75em;
         }
