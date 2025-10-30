@@ -322,21 +322,21 @@
 
         /* Main Content Wrapper */
         .main-content {
-            position: relative; /* Changed from fixed to relative for natural flow */
+            position: fixed; /* Changed from fixed to relative for natural flow */
             width: 100%;
             height: 100%;
             opacity: 0;
             transform: scale(0.95); /* Start slightly smaller */
             transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
             pointer-events: none;
-            overflow: hidden; /* Hide overflow initially */
+            overflow-y: auto; /* Allow vertical scrolling on the fixed element */
+    -webkit-overflow-scrolling: touch; /* For smoother iOS scrolling */
         }
 
         .main-content.visible {
             opacity: 1;
             transform: scale(1);
             pointer-events: auto;
-            overflow: visible; /* Allow scrolling once visible */
         }
 
         /* Animate-in classes for hero content (from prototype) */
