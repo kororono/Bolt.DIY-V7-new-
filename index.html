@@ -651,7 +651,7 @@
             
             // Remove preloader from DOM after transition
             setTimeout(() => {
-                preloaderScreen.style.display = 'none';
+                preloaderScreen.remove();  // ✅ Removes the element entirely
             }, 2400); // 1.2s delay + 1.2s content transition
         }
     </script>
