@@ -755,10 +755,6 @@ header, section {
     z-index: 91; /* Above the overlay when hovered */
 }
 
-.process-item:hover ~ .page-overlay {
-    background-color: var(--overlay-bg);
-}
-
 .process-item h3 {
     color: var(--text-color);
     margin-bottom: 1rem;
