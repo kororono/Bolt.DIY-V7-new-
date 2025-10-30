@@ -342,7 +342,7 @@
 
         /* Main Content Wrapper - FIXED FOR Z-DEPTH ANIMATION */
         .main-content {
-            position: fixed; /* CHANGED from relative to fixed for z-depth animation */
+            position: relative; /* CHANGED from relative to fixed for z-depth animation */
             width: 100%;
             height: 100%;
             opacity: 0;
@@ -359,12 +359,12 @@
             /* overflow is now managed by overflow-y: auto */
         }
 
-        /* Animate-in classes for hero content (from prototype) */
+        /* Animate-in classes for hero content (from prototype) 
         .hero-title, .hero-subtitle, .cta-button, .section-title, .section-content {
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
+        } */
 
         /* Staggered animation for hero content */
         .main-content.visible .hero-title {
@@ -413,7 +413,6 @@
 
 
     <!-- MAIN CONTENT WRAPPER -->
-    <!-- All of your original site content goes inside this wrapper -->
     <div class="main-content" id="mainContent">
     
 
