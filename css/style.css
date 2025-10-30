@@ -144,7 +144,7 @@ a:hover {
    =============================== */
 nav {
   width: 100%;
-  padding: 1.2rem 3rem;
+  padding: 1.2rem 2.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -194,11 +194,11 @@ nav {
 }
 
 .nav-logo a:hover span:nth-child(1) {
-    transform: translateY(-20px);
+    transform: translateY(-22px);
 }
 
 .nav-logo a:hover span:nth-child(2) {
-    transform: translateY(-20px);
+    transform: translateY(-22px);
 }
 
 
