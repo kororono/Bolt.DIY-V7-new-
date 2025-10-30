@@ -73,6 +73,7 @@
             opacity: 0;
             transform: scale(1.1);
             pointer-events: none;
+            z-index: -1; /* ✅ Push it behind everything when hidden */
         }
 
         /* Preloader Header (Logo) */
@@ -645,6 +646,8 @@
         function transitionToMain() {
             // Fade out preloader
             preloaderScreen.classList.add('hidden');
+            preloaderScreen.style.pointerEvents = 'none'; // ✅ Immediately disable clicks
+            preloaderScreen.style.zIndex = '-1'; // ✅ Push behind
             
             // Show main content after a pause
             setTimeout(() => {
