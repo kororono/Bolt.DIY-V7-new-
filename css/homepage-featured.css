@@ -43,8 +43,8 @@
         rgba(0, 0, 0, 0.5) 50%,
         rgba(0, 0, 0, 0.7) 100%
     );
-    backdrop-filter: blur(1px);
-    -webkit-backdrop-filter: blur(1px);
+    backdrop-filter: blur(0.5px);
+    -webkit-backdrop-filter: blur(0.5px);
 }
 
 /* Hero Content */
