@@ -218,7 +218,7 @@ nav {
   overflow: hidden;
   /* Crucial for animation: set a fixed height clipping mask */
   display: block;
-  height: 20px; /* This height must match the 'translateY' and 'top' values below */
+  height: 22px; /* This height must match the 'translateY' and 'top' values below */
 }
 
 .nav-links a span {
@@ -229,16 +229,16 @@ nav {
 
 .nav-links a span:nth-child(2) {
   position: absolute;
-  top: 20px; /* Position the second span just below the visible area */
+  top: 23px; /* Position the second span just below the visible area */
   left: 0;
 }
 
 .nav-links a:hover span:nth-child(1) {
-  transform: translateY(-20px); /* Move the first span up and out of view */
+  transform: translateY(-23px); /* Move the first span up and out of view */
 }
 
 .nav-links a:hover span:nth-child(2) {
-  transform: translateY(-20px); /* Move the second span up into view */
+  transform: translateY(-23px); /* Move the second span up into view */
 }
 
 /* --- Active Page Link --- */
