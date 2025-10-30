@@ -79,7 +79,7 @@
 .hero-content .cta-button {
     display: inline-block;
     background-color: var(--accent);
-    color: white;
+    color: var(--foreground);
     padding: 15px 30px;
     border-radius: 35px;
     font-weight: 600;
