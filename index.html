@@ -17,12 +17,12 @@
   <div class="preloader-header">
     <img src="assets/footer/sf-logo-w.webp" alt="Nairoreel Logo" class="preloader-logo-img">
     <div class="brand-text">
-      <span class="brand-line">Nairoreel</span>
-      <span class="brand-line">Productions</span>
+      <span>Nairoreel</span>
+      <span>Productions</span>
     </div>
   </div>
 
-  <!-- Switch -->
+  <!-- Switch (unchanged design) -->
   <label class="switch">
     <input class="switch__input" type="checkbox" role="switch" id="powerSwitch">
     <span class="switch__lever-shadow"></span>
@@ -226,11 +226,13 @@
   let videoReady = false;
 
   // Detect when hero video can play
-  heroVideo.addEventListener('canplaythrough', () => {
-    videoReady = true;
-  });
+  if (heroVideo) {
+    heroVideo.addEventListener('canplaythrough', () => {
+      videoReady = true;
+    });
+  }
 
-  // Fallback timeout in case video is slow
+  // Fallback after 5s max
   setTimeout(() => { videoReady = true; }, 5000);
 
   powerSwitch.addEventListener('change', function() {
@@ -246,7 +248,7 @@
             }
           }, 200);
         }
-      }, 500);
+      }, 600); // matches switch animation timing
     }
   });
 

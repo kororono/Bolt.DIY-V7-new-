@@ -216,133 +216,70 @@
 }
 
 /* ===========================
-   PRELOADER SWITCH SCREEN
+   PRELOADER SCREEN (NO SWITCH CHANGES)
    =========================== */
 .preloader-screen {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: #0a0a0a;
-    z-index: 9999;
-    transition: opacity 1s ease-out, transform 1s ease-out;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #0a0a0a;
+  z-index: 9999;
+  transition: opacity 1s ease-out, transform 1s ease-out;
 }
+
 .preloader-screen.hidden {
-    opacity: 0;
-    transform: scale(1.05);
-    pointer-events: none;
+  opacity: 0;
+  transform: scale(1.05);
+  pointer-events: none;
 }
 
-/* Header: logo + text stacked */
+/* Header with stacked logo/text */
 .preloader-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeIn 1s ease-out 0.5s forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 0.5s forwards;
 }
+
 .preloader-logo-img {
-    width: 80px;
-    height: auto;
-    margin-bottom: 0.5rem;
+  width: 80px;
+  height: auto;
+  margin-bottom: 0.4rem;
 }
+
 .brand-text {
-    text-align: center;
-    color: #fff;
-    font-family: sans-serif;
-    font-weight: 400;
-    line-height: 1.2;
-}
-.brand-line {
-    display: block;
-    font-size: 1.6rem;
-}
-
-/* Switch + text reused from prototype */
-.switch {
-    background-color: hsl(223, 5%, 15%);
-    border-radius: 0.375em;
-    width: 3.75em;
-    height: 8.75em;
-    position: relative;
-    box-shadow:
-        0 4.375em 2em hsl(223,5%,10%) inset,
-        0 0.125em 0 hsl(223,5%,25%) inset,
-        0 0 0.375em hsla(223,10%,5%,0.5);
-}
-.switch__input {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    appearance: none;
-    cursor: pointer;
-}
-.switch__lever,
-.switch__lever-shadow,
-.switch__lever-half-top,
-.switch__lever-half-bottom {
-    position: absolute;
-    display: block;
-}
-.switch__lever {
-    width: calc(100% - 0.75em);
-    height: calc(100% - 0.75em);
-    background-color: hsl(223,5%,15%);
-    border-radius: 0.25em;
-    margin: 0.375em;
-    box-shadow:
-        0 0 0.25em hsl(223,5%,10%) inset,
-        0.75em 0 0.5em hsl(223,5%,25%) inset;
-}
-.switch__lever-half-top {
-    width: calc(100% - 0.25em);
-    height: calc(50% - 0.125em);
-    left: 0.125em;
-    bottom: 50%;
-    background-color: hsl(223,5%,25%);
-    border-radius: 0.25em 0.25em 0 0;
-    transform-origin: 50% 100%;
-}
-.switch__lever-half-bottom {
-    width: calc(100% - 0.25em);
-    height: calc(50% - 0.125em);
-    left: 0.125em;
-    top: 50%;
-    background-color: hsl(223,5%,28%);
-    border-radius: 0 0 0.25em 0.25em;
-    transform-origin: 50% 0;
-}
-.switch__input:checked ~ .switch__lever .switch__lever-half-bottom {
-    background-color: hsl(345,90%,45%);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.2;
+  font-weight: 400;
 }
 
-/* Fade text animation */
 @keyframes fadeIn {
   to { opacity: 1; }
 }
 
-.power-text {
-    font-size: 0.9rem;
-    color: #777;
-    text-transform: uppercase;
-    margin-top: 1.5rem;
-    animation: fadeIn 1.2s ease-out 1.5s forwards;
-}
-
-/* Hide main content initially */
+/* Hide main content until preloader completes */
 #mainContent {
-    opacity: 0;
-    transform: scale(0.95);
-    transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
 }
 #mainContent.visible {
-    opacity: 1;
-    transform: scale(1);
+  opacity: 1;
+  transform: scale(1);
 }
+
 
 /* ========================================
    RESPONSIVE DESIGN
