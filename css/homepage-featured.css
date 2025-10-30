@@ -43,8 +43,8 @@
         rgba(0, 0, 0, 0.5) 50%,
         rgba(0, 0, 0, 0.7) 100%
     );
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
 }
 
 /* Hero Content */
@@ -78,7 +78,7 @@
 /* CTA Button */
 .hero-content .cta-button {
     display: inline-block;
-    background-color: var(--foreground);
+    background-color: var(--accent);
     color: var(--background);
     padding: 18px 60px;
     border-radius: 50px;
@@ -91,7 +91,7 @@
 }
 
 .hero-content .cta-button:hover {
-    background-color: var(--accent);
+    background-color: var(--background);
     color: var(--foreground);
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(234, 24, 33, 0.3);
@@ -101,20 +101,15 @@
    NAVIGATION HIGHLIGHT - "Our Work" Card
    ======================================== */
 .nav-links a.nav-highlight {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--accent);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     padding: 8px 20px;
     border-radius: 25px;
-    transition: all 0.3s ease;
+    transition: none;
 }
 
-.nav-links a.nav-highlight:hover {
-    background: var(--accent);
-    border-color: var(--accent);
-    transform: scale(1.05);
-}
 
 /* ========================================
    FEATURED WORK SECTION
