@@ -9,49 +9,42 @@
     <meta name="description" content="We are Nairoreel Productions — a creative studio crafting captivating visuals through 3D, cinematography, and motion storytelling.">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/homepage-featured.css">
-
-    <style>
-     
-        * {
-            /* Apply box-sizing to all elements for consistency */
+    
+    <!--
+    =================================
+    PRELOADER STYLES
+    =================================
+    These styles are only for the preloader screen and the transition.
+    They are isolated from the main site styles.
+    -->
+    <style id="preloader-styles">
+        /* Base reset for preloader */
+        .preloader-scope-reset * {
+            border: 0;
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
         
-        /* Preloader root variables */
         :root {
-            --hue: 223;
-            --hue2: 345;  /* Red for 'on' */
-            --bg: #0a0a0a;
-            --fg: hsl(var(--hue),10%,90%);
-            --switch-bg: hsl(var(--hue), 5%, 15%); /* Darker switch body */
-            --switch-bg-light: hsl(var(--hue), 5%, 25%);
-            --switch-bg-dark: hsl(var(--hue), 5%, 10%);
-            --trans-dur: 0.3s;
-            --trans-timing: cubic-bezier(0.83,0,0.17,1);
-            /* Base font size for preloader */
-            font-size: calc(16px + (24 - 16) * (100vw - 320px) / (2560 - 320));
+            --preloader-hue: 223;
+            --preloader-hue2: 345;  /* Red for 'on' */
+            --preloader-bg: #0a0a0a;
+            --preloader-fg: hsl(var(--preloader-hue),10%,90%);
+            --preloader-switch-bg: hsl(var(--preloader-hue), 5%, 15%); /* Darker switch body */
+            --preloader-switch-bg-light: hsl(var(--preloader-hue), 5%, 25%);
+            --preloader-switch-bg-dark: hsl(var(--preloader-hue), 5%, 10%);
+            --preloader-trans-dur: 0.3s;
+            --preloader-trans-timing: cubic-bezier(0.83,0,0.17,1);
         }
         
-        /* Preloader-specific body styles (overridden by your main CSS later) */
-        .preloader-screen body,
+        /* Apply preloader font only to the preloader itself */
+        .preloader-screen,
         .preloader-screen input {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.5;
         }
         
-        /* NOTE: The background-color for the body is now set inline in the <body> tag to prevent white flash. */
-        .preloader-screen body {
-            background-color: var(--bg);
-            color: var(--fg);
-            display: flex;
-            height: 100vh;
-            transition:
-                background-color var(--trans-dur) var(--trans-timing),
-                color var(--trans-dur) var(--trans-timing);
-            position: relative;
-            overflow: hidden;
-        }
-
         /* Preloader Screen */
         .preloader-screen {
             position: fixed;
@@ -63,17 +56,22 @@
             flex-direction: column;
             align-items: center;
             justify-content: center; /* Center content vertically */
-            background: #0a0a0a;
+            background: var(--preloader-bg);
+            color: var(--preloader-fg);
             z-index: 1000;
             transition: opacity 1s ease-out, transform 1s ease-out;
             padding: 2rem;
+            /* Apply reset scope */
+            border: 0;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         .preloader-screen.hidden {
             opacity: 0;
             transform: scale(1.1);
             pointer-events: none;
-            z-index: -1; /* ✅ Push it behind everything when hidden */
         }
 
         /* Preloader Header (Logo) */
@@ -96,55 +94,49 @@
             object-fit: contain;
         }
 
-        /* Power Text - ENSURED ANIMATION PROPERTIES ARE CORRECT */
+        /* Power Text */
         .power-text {
             font-size: 0.9rem;
             letter-spacing: 0.2em;
             color: #666;
             text-transform: uppercase;
             opacity: 0;
-            /* Animation from prototype: fadeInPulse 2s ease-out 1s forwards */
-            animation: fadeInPulse 2s ease-out 1s forwards; /* Corrected to match prototype */
-            margin-top: 3rem; /* Space below switch */
+            animation: preloaderFadeInPulse 2s ease-out 1s forwards;
+            margin-top: 1.5rem; /* Space below switch */
         }
 
-        @keyframes fadeIn {
+        @keyframes preloaderFadeIn {
             to { opacity: 1; }
         }
 
-        @keyframes fadeInPulse {
+        @keyframes preloaderFadeInPulse {
             0% { opacity: 0; }
             50% { opacity: 0.5; }
             100% { opacity: 0.3; }
         }
         
-        /* Switch Styles (Unchanged) */
+        /* Switch Styles */
         .switch,
         .switch__input {
             -webkit-tap-highlight-color: transparent;
         }
         
         .switch {
-    /* *** ADDED FOR FADE-IN ANIMATION *** */
-    opacity: 0; 
-    /* The switch should fade in after the logo, but before the "Illuminate..." text. */
-    /* fadeInPulse starts at 1s, so let's start the switch at 0.75s */
-    animation: fadeIn 1s ease-out 0.75s forwards; 
-
-    /* Changed to darker color */
-    background-color: var(--switch-bg);
+            /* Changed to darker color */
+            background-color: var(--preloader-switch-bg);
             border-radius: 0.375em;
             box-shadow:
-                0 4.375em 2em var(--switch-bg-dark) inset,
-                0 0.125em 0 var(--switch-bg-light) inset,
-                0 0 0.375em hsla(var(--hue),10%,5%,0.5);
+                0 4.375em 2em var(--preloader-switch-bg-dark) inset,
+                0 0.125em 0 var(--preloader-switch-bg-light) inset,
+                0 0 0.375em hsla(var(--preloader-hue),10%,5%,0.5);
             margin: 0; /* Removed margin: auto */
             position: relative;
             transition:
-        background-color var(--trans-dur) var(--trans-timing),
-        box-shadow var(--trans-dur) var(--trans-timing);
+                background-color var(--preloader-trans-dur) var(--preloader-trans-timing),
+                box-shadow var(--preloader-trans-dur) var(--preloader-trans-timing);
             width: 3.75em;
             height: 8.75em;
+            font-size: calc(16px + (24 - 16) * (100vw - 320px) / (2560 - 320));
         }
         
         .switch__input,
@@ -173,9 +165,7 @@
             height: 100%;
             -webkit-appearance: none;
             appearance: none;
-            margin: 0; /* Explicitly remove margin */
-            padding: 0; /* Explicitly remove padding */
-            border: 0; /* Explicitly remove border */
+            margin: 0;
         }
         
         .switch__label {
@@ -191,22 +181,22 @@
         
         .switch__lever {
             /* Adjusted lever color */
-            background-color: var(--switch-bg);
+            background-color: var(--preloader-switch-bg);
             border-radius: 0.25em;
             box-shadow:
-                0 0 0.25em var(--switch-bg-dark) inset,
-                0.75em 0 0.5em var(--switch-bg-light) inset;
+                0 0 0.25em var(--preloader-switch-bg-dark) inset,
+                0.75em 0 0.5em var(--preloader-switch-bg-light) inset;
             margin: 0.375em;
             position: relative;
             transition:
-                background-color var(--trans-dur) var(--trans-timing),
-                box-shadow var(--trans-dur) var(--trans-timing);
+                background-color var(--preloader-trans-dur) var(--preloader-trans-timing),
+                box-shadow var(--preloader-trans-dur) var(--preloader-trans-timing);
             width: calc(100% - 0.75em);
             height: calc(100% - 0.75em);
         }
         
         .switch__lever:before {
-            background-image: linear-gradient(hsla(var(--hue),10%,5%,0),hsla(var(--hue),10%,5%,0.2));
+            background-image: linear-gradient(hsla(var(--preloader-hue),10%,5%,0),hsla(var(--preloader-hue),10%,5%,0.2));
             border-radius: inherit;
             content: "";
             display: block;
@@ -223,12 +213,12 @@
             width: calc(100% - 0.25em);
             height: calc(50% - 0.125em);
             transition:
-                background-color var(--trans-dur) var(--trans-timing),
-                transform var(--trans-dur) var(--trans-timing);
+                background-color var(--preloader-trans-dur) var(--preloader-trans-timing),
+                transform var(--preloader-trans-dur) var(--preloader-trans-timing);
         }
         
         .switch__lever-half-top {
-            background-color: var(--switch-bg-light); /* Adjusted */
+            background-color: var(--preloader-switch-bg-light); /* Adjusted */
             border-radius: 0.25em 0.25em 0 0;
             bottom: 50%;
             transform-origin: 50% 100%;
@@ -239,22 +229,22 @@
             content: "";
             display: block;
             transition:
-                background-color var(--trans-dur) var(--trans-timing),
-                box-shadow var(--trans-dur) var(--trans-timing);
+                background-color var(--preloader-trans-dur) var(--preloader-trans-timing),
+                box-shadow var(--preloader-trans-dur) var(--preloader-trans-timing);
         }
         
         .switch__lever-half-top:before {
             border-radius: 50%;
             box-shadow:
-                0 0 0 0.125em var(--switch-bg) inset,     /* Adjusted */
-                0 0.25em 0 var(--switch-bg-light) inset, /* Adjusted */
-                0 0.125em 0 var(--switch-bg-light);      /* Adjusted */
+                0 0 0 0.125em var(--preloader-switch-bg) inset,     /* Adjusted */
+                0 0.25em 0 var(--preloader-switch-bg-light) inset, /* Adjusted */
+                0 0.125em 0 var(--preloader-switch-bg-light);      /* Adjusted */
             width: 1em;
             height: 1em;
         }
         
         .switch__lever-half-bottom {
-            background-color: hsl(var(--hue), 5%, 28%); /* Adjusted */
+            background-color: hsl(var(--preloader-hue), 5%, 28%); /* Adjusted */
             border-radius: 0 0 0.25em 0.25em;
             align-items: flex-end;
             top: 50%;
@@ -263,11 +253,11 @@
         }
         
         .switch__lever-half-bottom:before {
-            background-color: hsl(var(--hue2),10%,25%);
+            background-color: hsl(var(--preloader-hue2),10%,25%);
             box-shadow:
-                0 0.125em 0 hsl(var(--hue2),10%,20%) inset,
-                0 -0.0625em 0 var(--switch-bg-light) inset, /* Adjusted */
-                0 0 0.5em hsla(var(--hue2),90%,45%,0);
+                0 0.125em 0 hsl(var(--preloader-hue2),10%,20%) inset,
+                0 -0.0625em 0 var(--preloader-switch-bg-light) inset, /* Adjusted */
+                0 0 0.5em hsla(var(--preloader-hue2),90%,45%,0);
             width: 0.25em;
             height: 1.125em;
         }
@@ -283,14 +273,14 @@
         
         .switch__lever-shadow:before,
         .switch__lever-shadow:after {
-            background-color: hsla(var(--hue),10%,5%,0.25); /* Adjusted */
+            background-color: hsla(var(--preloader-hue),10%,5%,0.25); /* Adjusted */
             content: "";
             left: 1.625em;
             width: 3em;
             height: 50%;
             transition:
-                background-color var(--trans-dur) var(--trans-timing),
-                transform var(--trans-dur) var(--trans-timing);
+                background-color var(--preloader-trans-dur) var(--preloader-trans-timing),
+                transform var(--preloader-trans-dur) var(--preloader-trans-timing);
         }
         
         .switch__lever-shadow:before {
@@ -305,30 +295,30 @@
             transform-origin: 0 0;
         }
         
-        /* `:checked` state - LED turns RED (Unchanged) */
+        /* `:checked` state - LED turns RED */
         .switch__input:checked ~ .switch__lever .switch__lever-half-top {
-            background-color: var(--switch-bg); /* Adjusted */
+            background-color: var(--preloader-switch-bg); /* Adjusted */
             transform: rotateX(35deg);
         }
         
         .switch__input:checked ~ .switch__lever .switch__lever-half-top:before {
             box-shadow:
-                0 0 0 0.125em var(--switch-bg-dark) inset,  /* Adjusted */
-                0 0.25em 0 var(--switch-bg) inset,      /* Adjusted */
-                0 0.125em 0 var(--switch-bg);           /* Adjusted */
+                0 0 0 0.125em var(--preloader-switch-bg-dark) inset,  /* Adjusted */
+                0 0.25em 0 var(--preloader-switch-bg) inset,      /* Adjusted */
+                0 0.125em 0 var(--preloader-switch-bg);           /* Adjusted */
         }
         
         .switch__input:checked ~ .switch__lever .switch__lever-half-bottom {
-            background-color: var(--switch-bg-light); /* Adjusted */
+            background-color: var(--preloader-switch-bg-light); /* Adjusted */
             transform: rotateX(0);
         }
         
         .switch__input:checked ~ .switch__lever .switch__lever-half-bottom:before {
-            background-color: hsl(var(--hue2),90%,45%);  /* RED LED */
+            background-color: hsl(var(--preloader-hue2),90%,45%);  /* RED LED */
             box-shadow:
-                0 0.125em 0 hsl(var(--hue2),90%,20%) inset,
-                0 -0.0625em 0 var(--switch-bg-light) inset, /* Adjusted */
-                0 0 0.5em hsla(var(--hue2),90%,45%,1);    /* RED GLOW */
+                0 0.125em 0 hsl(var(--preloader-hue2),90%,20%) inset,
+                0 -0.0625em 0 var(--preloader-switch-bg-light) inset, /* Adjusted */
+                0 0 0.5em hsla(var(--preloader-hue2),90%,45%,1);    /* RED GLOW */
         }
         
         .switch__input:checked ~ .switch__lever-shadow:before {
@@ -339,64 +329,44 @@
             transform: skewX(0) scaleY(0.85);
         }
 
-        /* Main Content Wrapper - FIXED FOR Z-DEPTH ANIMATION */
+        /* Main Content Transition */
+        /* This is the wrapper for the *real* site */
         .main-content {
-            position: relative;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            min-height: 100vh;
+            height: 100%;
             opacity: 0;
             transform: scale(0.95); /* Start slightly smaller */
             transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
-            overflow-x: hidden;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch; /* For smoother iOS scrolling */
+            pointer-events: none;
+            overflow-y: auto; /* Allow scrolling */
+            -webkit-overflow-scrolling: touch;
+            /* Ensure main content's base is black, matching the preloader bg */
+            background: #000; 
         }
 
         .main-content.visible {
             opacity: 1;
             transform: scale(1);
             pointer-events: auto;
-            overflow-x: hidden;
-            overflow-y: auto;
-         }
-
-        /* Animate-in classes for hero content (from prototype) 
-        .hero-title, .hero-subtitle, .cta-button, .section-title, .section-content {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        } */
-
-        /* Staggered animation for hero content *
-        .main-content.visible .hero-title {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.4s; 
         }
-        .main-content.visible .hero-subtitle {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.6s;
-        }
-        .main-content.visible .cta-button {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.8s;
-        }*/
-         /* Note: Your own CSS already animates the hero content, 
-            so we just need to ensure the wrapper becomes visible */
-
     </style>
-</head>
 
-<body style="background-color: #0a0a0a;">
-
+    <!-- 
+    =================================
+    PRELOADER HTML
+    =================================
+    This is the HTML from switch-preloader-prototype.html
+    -->
     <div class="preloader-screen" id="preloaderScreen">
         
         <div class="preloader-header">
             <img src="assets/footer/sf-logo-w.webp" alt="Nairoreel Productions Logo" class="preloader-logo-img">
         </div>
         
+        <!-- Power Switch -->
         <label class="switch">
             <input class="switch__input" type="checkbox" role="switch" id="powerSwitch">
             <span class="switch__lever-shadow"></span>
@@ -408,15 +378,25 @@
             <span class="switch__label">Power</span>
         </label>
         
+        <!-- Creative Text -->
         <div class="power-text">Illuminate our world</div>
     </div>
-    <!-- END PRELOADER SCREEN -->
 
-
-    <!-- MAIN CONTENT WRAPPER -->
+    <!-- 
+    =================================
+    MAIN CONTENT WRAPPER
+    =================================
+    This div wraps your *entire* original site.
+    The preloader JS targets this ID.
+    -->
     <div class="main-content" id="mainContent">
     
-
+        <!-- 
+        =================================
+        ORIGINAL SITE HTML
+        =================================
+        This is all the HTML from index(3).html
+        -->
         <nav>
             <div class="nav-container">
                 <div class="nav-logo">
@@ -590,36 +570,149 @@
                 © 2025 Nairoreel Productions. All rights reserved.
             </div>
         </footer>
+        
+        <!-- 
+        =================================
+        SITE SCRIPTS
+        =================================
+        -->
+        
+        <!-- GSAP Library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+        
+        Main Scripts 
+        This function defines all your site's logic.
+        It is *called* by the preloader script below when the site is visible.
+        -->
+        <script id="main-app-script">
+            function initializeMainSite() {
+                // Smooth scrolling for anchor links
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        if (targetId === '#' || !targetId.startsWith('#')) return; // Check for valid hash
+                        
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            // The .main-content is the scrolling element, not the body
+                            const mainContent = document.getElementById('mainContent');
+                            if (mainContent) {
+                                // Calculate target position relative to the scrolling container's viewport
+                                const targetOffsetTop = targetElement.offsetTop;
+                                mainContent.scrollTo({
+                                    top: targetOffsetTop, // scroll mainContent
+                                    behavior: 'smooth'
+                                });
+                            } else {
+                                targetElement.scrollIntoView({ behavior: 'smooth' }); // fallback
+                            }
+                        }
+                    });
+                });
 
-    </div> 
-    <!-- END MAIN CONTENT WRAPPER -->
-    
-    <!-- GSAP Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    
-    <!-- Main Scripts -->
-    <script src="js/main.js"></script>
+                // Darkening page effect when hovering on interactive elements
+                const interactiveElements = document.querySelectorAll('.bento-item, .process-item, .contact-link');
+                const pageOverlay = document.querySelector('.page-overlay');
+                
+                if (pageOverlay) { // Safety check
+                    interactiveElements.forEach(element => {
+                        element.addEventListener('mouseenter', function() {
+                            pageOverlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
+                        });
+                        element.addEventListener('mouseleave', function() {
+                            pageOverlay.style.backgroundColor = 'rgba(0,0,0,0)';
+                        });
+                    });
+                } else {
+                    console.warn("'.page-overlay' not found. Darkening hover effect is disabled.");
+                }
+                
+                // Scrolling text
+                const scrollingTexts = document.querySelectorAll('.scrolling-text');
+                if (scrollingTexts.length > 0) { // Safety check
+                    scrollingTexts.forEach(textElement => {
+                        const originalContent = textElement.textContent;
+                        textElement.textContent = originalContent + ' ' + originalContent;
+                        const observer = new IntersectionObserver((entries) => {
+                            entries.forEach(entry => {
+                                textElement.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
+                            });
+                        });
+                        observer.observe(textElement);
+                    });
+                }
 
-    <!-- INLINED PRELOADER SCRIPT -->
-    <script>
-        // Get references to the DOM elements
+                // Active state for navigation based on current page
+                const currentLocation = window.location.pathname;
+                const navLinks = document.querySelectorAll('.nav-links a');
+                navLinks.forEach(link => {
+                    const linkPath = link.getAttribute('href');
+                    if (linkPath && currentLocation.includes(linkPath) && linkPath !== '#') {
+                        link.classList.add('active');
+                    }
+                });
+
+                // -----------------------------
+                // 🟣 Mobile Navigation Menu Logic
+                // -----------------------------
+                const hamburger = document.querySelector('.hamburger');
+                const navLinksContainer = document.querySelector('.nav-links'); // Use a different name
+
+                if (!hamburger || !navLinksContainer) {
+                    console.warn("Hamburger menu elements (.hamburger or .nav-links) not found.");
+                    return; // safety check
+                }
+
+                hamburger.addEventListener('click', () => {
+                    navLinksContainer.classList.toggle('active');
+                    hamburger.classList.toggle('active');
+                    document.body.classList.toggle('menu-open');
+
+                    // Apply staggered animation when opening
+                    if (navLinksContainer.classList.contains('active')) {
+                        const links = navLinksContainer.querySelectorAll('a');
+                        links.forEach((link, index) => {
+                            link.style.animation = `fadeIn 0.4s ease forwards ${index * 0.07}s`;
+                        });
+                    } else {
+                        const links = navLinksContainer.querySelectorAll('a');
+                        links.forEach(link => link.style.animation = '');
+                    }
+                });
+
+                // ALSO: Add 'close menu on link click' logic, it's essential for UX
+                navLinksContainer.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        // Only close if the menu is actually open
+                        if (hamburger.classList.contains('active')) {
+                            hamburger.classList.remove('active');
+                            navLinksContainer.classList.remove('active');
+                            document.body.classList.remove('menu-open');
+                        }
+                    });
+                });
+            }
+        </script>
+
+    </div> <!-- End of .main-content wrapper -->
+
+    <!-- 
+    =================================
+    PRELOADER SCRIPT (MODIFIED)
+    =================================
+    This script now calls initializeMainSite() when the content is visible.
+    -->
+    <script id="preloader-script">
         const powerSwitch = document.getElementById('powerSwitch');
         const preloaderScreen = document.getElementById('preloaderScreen');
         const mainContent = document.getElementById('mainContent');
-        const heroVideo = document.getElementById('heroVideo'); // Get the video
 
+        // Simulate asset loading
         let assetsReady = false;
-
-        // Check if video is already loaded (e.g., from cache)
-        // readyState 4 means 'HAVE_ENOUGH_DATA'
-        if (heroVideo.readyState >= 4) {
+        setTimeout(() => {
             assetsReady = true;
-        } else {
-            // Listen for the 'canplaythrough' event
-            heroVideo.addEventListener('canplaythrough', () => {
-                assetsReady = true;
-            }, { once: true }); // Use { once: true } to remove listener after firing
-        }
+        }, 2000); // 2 seconds to load assets
 
         // Handle switch activation
         powerSwitch.addEventListener('change', function() {
@@ -630,14 +723,13 @@
                     if (assetsReady) {
                         transitionToMain();
                     } else {
-                        // If assets aren't ready, wait for them.
-                        // The 'canplaythrough' listener above will set assetsReady = true
+                        // Wait for assets if not ready
                         const checkInterval = setInterval(() => {
                             if (assetsReady) {
                                 clearInterval(checkInterval);
                                 transitionToMain();
                             }
-                        }, 100); // Check every 100ms
+                        }, 100);
                     }
                 }, 600); // Let switch animation play
             }
@@ -646,18 +738,25 @@
         function transitionToMain() {
             // Fade out preloader
             preloaderScreen.classList.add('hidden');
-            preloaderScreen.style.pointerEvents = 'none'; // ✅ Immediately disable clicks
-            preloaderScreen.style.zIndex = '-1'; // ✅ Push behind
             
             // Show main content after a pause
             setTimeout(() => {
                 mainContent.classList.add('visible');
-            }, 1200); // 1.2s delay for a smoother feel
+                
+                // *** THIS IS THE FIX ***
+                // Initialize all the site's JS *after* it becomes visible
+                if (typeof initializeMainSite === 'function') {
+                    initializeMainSite(); 
+                } else {
+                    console.error("initializeMainSite function not found. Main site JS will not run.");
+                }
+                
+            }, 1200); 
             
             // Remove preloader from DOM after transition
             setTimeout(() => {
-                preloaderScreen.remove();  // ✅ Removes the element entirely
-            }, 2400); // 1.2s delay + 1.2s content transition
+                preloaderScreen.style.display = 'none';
+            }, 2400); 
         }
     </script>
 </body>
