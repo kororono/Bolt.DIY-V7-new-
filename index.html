@@ -83,9 +83,18 @@
     <!-- Hero Section with Video Background -->
     <header class="hero-section">
         <div class="hero-video-bg">
-            <video autoplay loop muted playsinline poster="assets/home/home-hero-poster.png">
-             <source src="assets/home/kfc hero.mp4" type="video/mp4">
-           </video>
+            <video 
+            autoplay 
+            loop 
+            muted 
+            playsinline 
+            webkit-playsinline
+            preload="auto"
+            poster="assets/home/home-hero-poster.png">
+            <source src="assets/home/kfc-hero.mp4" type="video/mp4">
+            <!-- Fallback message for browsers that don't support video -->
+            Your browser does not support the video tag.
+        </video>
             <div class="hero-overlay"></div>
         </div>
         <div class="hero-content">
