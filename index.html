@@ -360,12 +360,13 @@
     =================================
     This is the HTML from switch-preloader-prototype.html
     -->
-     <div class="preloader-screen" id="preloaderScreen">
+    <div class="preloader-screen" id="preloaderScreen">
         
         <div class="preloader-header">
             <img src="assets/footer/sf-logo-w.webp" alt="Nairoreel Productions Logo" class="preloader-logo-img">
         </div>
         
+        <!-- Power Switch -->
         <label class="switch">
             <input class="switch__input" type="checkbox" role="switch" id="powerSwitch">
             <span class="switch__lever-shadow"></span>
@@ -374,8 +375,10 @@
                 <span class="switch__lever-half-top"></span>
                 <span class="switch__lever-half-bottom"></span>
             </span>
+            <span class="switch__label">Power</span>
         </label>
         
+        <!-- Creative Text -->
         <div class="power-text">Illuminate our world</div>
     </div>
 
@@ -577,7 +580,9 @@
         <!-- GSAP Library -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
         
-       
+        Main Scripts 
+        This function defines all your site's logic.
+        It is *called* by the preloader script below when the site is visible.
         -->
         <script id="main-app-script">
             function initializeMainSite() {
@@ -606,7 +611,22 @@
                     });
                 });
 
-
+                // Darkening page effect when hovering on interactive elements
+                const interactiveElements = document.querySelectorAll('.bento-item, .process-item, .contact-link');
+                const pageOverlay = document.querySelector('.page-overlay');
+                
+                if (pageOverlay) { // Safety check
+                    interactiveElements.forEach(element => {
+                        element.addEventListener('mouseenter', function() {
+                            pageOverlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
+                        });
+                        element.addEventListener('mouseleave', function() {
+                            pageOverlay.style.backgroundColor = 'rgba(0,0,0,0)';
+                        });
+                    });
+                } else {
+                    console.warn("'.page-overlay' not found. Darkening hover effect is disabled.");
+                }
                 
                 // Scrolling text
                 const scrollingTexts = document.querySelectorAll('.scrolling-text');
