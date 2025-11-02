@@ -14,8 +14,8 @@
     
     // If already seen, hide immediately and unlock body
     if (preloaderSeen === 'true') {
+        // Don't add preloader-active class, just ensure it's hidden
         preloaderOverlay.style.display = 'none';
-        document.body.classList.remove('preloader-active');
         return; // Exit early, don't run any other preloader code
     }
     
