@@ -72,6 +72,7 @@
             opacity: 0;
             transform: scale(1.1);
             pointer-events: none;
+            z-index: -1; /* Move behind content immediately when hidden */
         }
 
         /* Preloader Header (Logo) */
@@ -82,7 +83,7 @@
             gap: 0.5rem;
             margin-bottom: 0.5rem; /* Space between header and switch */
             opacity: 0;
-            animation: fadeIn 1s ease-out 0.5s forwards;
+            animation: preloaderFadeIn 1s ease-out 0.5s forwards;
             width: 100%; /* Ensure it takes full width for centering */
         }
 
@@ -113,6 +114,18 @@
             0% { opacity: 0; }
             50% { opacity: 0.5; }
             100% { opacity: 0.3; }
+        }
+
+        /* Animation for mobile menu links */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         /* Switch Styles */
@@ -344,13 +357,29 @@
             overflow-y: auto; /* Allow scrolling */
             -webkit-overflow-scrolling: touch;
             /* Ensure main content's base is black, matching the preloader bg */
-            background: #000; 
+            background: #000;
         }
 
         .main-content.visible {
             opacity: 1;
             transform: scale(1);
             pointer-events: auto;
+        }
+
+        /* Ensure nav is always above content and has proper z-index */
+        .main-content nav {
+            position: fixed;
+            z-index: 200; /* Higher than default nav z-index */
+        }
+
+        /* Ensure mobile nav links are visible and clickable */
+        .main-content .nav-links.active {
+            z-index: 200; /* Match nav z-index */
+        }
+
+        /* Ensure nav link colors are correct */
+        .main-content .nav-links a {
+            color: #ffffff; /* White color for visibility */
         }
     </style>
 
