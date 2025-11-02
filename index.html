@@ -374,7 +374,6 @@
                 <span class="switch__lever-half-top"></span>
                 <span class="switch__lever-half-bottom"></span>
             </span>
-            <span class="switch__label">Power</span>
         </label>
         
         <div class="power-text">Illuminate our world</div>
@@ -622,7 +621,7 @@
                     });
                 } else {
                     console.warn("'.page-overlay' not found. Darkening hover effect is disabled.");
-                }
+                }//
                 
                 // Scrolling text
                 const scrollingTexts = document.querySelectorAll('.scrolling-text');
@@ -652,42 +651,30 @@
                 // -----------------------------
                 // 🟣 Mobile Navigation Menu Logic
                 // -----------------------------
-                const hamburger = document.querySelector('.hamburger');
-                const navLinksContainer = document.querySelector('.nav-links'); // Use a different name
+                
+             document.addEventListener('DOMContentLoaded', function() {
+              const hamburger = document.querySelector('.hamburger');
+              const navLinks = document.querySelector('.nav-links');
 
-                if (!hamburger || !navLinksContainer) {
-                    console.warn("Hamburger menu elements (.hamburger or .nav-links) not found.");
-                    return; // safety check
-                }
+            if (!hamburger || !navLinks) return; // safety check
 
-                hamburger.addEventListener('click', () => {
-                    navLinksContainer.classList.toggle('active');
-                    hamburger.classList.toggle('active');
-                    document.body.classList.toggle('menu-open');
+             hamburger.addEventListener('click', () => {
+             navLinks.classList.toggle('active');
+             hamburger.classList.toggle('active');
+             document.body.classList.toggle('menu-open');
 
-                    // Apply staggered animation when opening
-                    if (navLinksContainer.classList.contains('active')) {
-                        const links = navLinksContainer.querySelectorAll('a');
-                        links.forEach((link, index) => {
-                            link.style.animation = `fadeIn 0.4s ease forwards ${index * 0.07}s`;
-                        });
-                    } else {
-                        const links = navLinksContainer.querySelectorAll('a');
-                        links.forEach(link => link.style.animation = '');
-                    }
-                });
-
-                // ALSO: Add 'close menu on link click' logic, it's essential for UX
-                navLinksContainer.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        // Only close if the menu is actually open
-                        if (hamburger.classList.contains('active')) {
-                            hamburger.classList.remove('active');
-                            navLinksContainer.classList.remove('active');
-                            document.body.classList.remove('menu-open');
-                        }
-                    });
-                });
+            // Apply staggered animation when opening
+         if (navLinks.classList.contains('active')) {
+             const links = navLinks.querySelectorAll('a');
+             links.forEach((link, index) => {
+                link.style.animation = `fadeIn 0.4s ease forwards ${index * 0.07}s`;
+            });
+         } else {
+            const links = navLinks.querySelectorAll('a');
+            links.forEach(link => link.style.animation = '');
+           }
+        });
+      });
             }
         </script>
 
