@@ -2,14 +2,23 @@
 <html lang="en">
 
 <head>
-    <meta name="theme-color" content="#0a0a0a">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a0a">
     <title>Nairoreel Productions – Visual Storytelling Studio</title>
     <meta name="description" content="We are Nairoreel Productions – a creative studio crafting captivating visuals through 3D, cinematography, and motion storytelling.">
+    
+    <!-- CRITICAL: Prevent white flash - inline styles load instantly -->
+    <style>
+        html, body {
+            background-color: #0a0a0a;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/homepage-featured.css">
-    <!-- NEW: Preloader CSS - Isolated and won't interfere -->
     <link rel="stylesheet" href="css/preloader.css">
 </head>
 
@@ -22,11 +31,7 @@
         
         <!-- Header: Logo + Brand -->
         <div class="preloader-header">
-            <!-- Simple SVG Logo for 'N' -->
-            <svg class="preloader-logo" viewBox="0 0 100 100">
-                <path d="M20 80 L20 20 L80 80 L80 20"></path>
-            </svg>
-            <div class="preloader-brand-name">Nairoreel</div>
+         <img src="assets/footer/sf-logo-w.webp" alt="Nairoreel Productions Logo" class="preloader-logo-img">
         </div>
         
         <!-- Power Switch -->

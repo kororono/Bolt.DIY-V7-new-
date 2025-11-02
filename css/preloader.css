@@ -25,32 +25,20 @@
     pointer-events: none;
 }
 
-/* Preloader Header (Logo + Brand) */
+/* Preloader Header (Logo Only) */
 .preloader-header {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: center;
-    gap: 0.5rem;
     margin-bottom: 2.5rem;
     opacity: 0;
     animation: preloaderFadeIn 1s ease-out 0.5s forwards;
-    color: #ffffff;
 }
 
-.preloader-logo {
-    width: 2.8rem;
-    height: 2.8rem;
-    stroke: #fff;
-    stroke-width: 6;
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.preloader-brand-name {
-    font-size: 2.2rem;
-    font-weight: 300;
-    letter-spacing: -0.02em;
+.preloader-logo-img {
+    width: 6rem; /* Adjust size as needed */
+    height: auto;
+    object-fit: contain;
 }
 
 /* Power Text */
@@ -306,13 +294,8 @@ body.preloader-active {
         margin-bottom: 2rem;
     }
     
-    .preloader-logo {
-        width: 2.5rem;
-        height: 2.5rem;
-    }
-    
-    .preloader-brand-name {
-        font-size: 2rem;
+    .preloader-logo-img {
+        width: 4.5rem; /* Smaller on mobile */
     }
     
     .preloader-power-text {
