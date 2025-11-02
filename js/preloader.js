@@ -7,19 +7,16 @@
 (function() {
     'use strict';
     
-    // Check if preloader has been seen in this session
     const preloaderSeen = sessionStorage.getItem('nairoreelPreloaderSeen');
     const preloaderOverlay = document.getElementById('preloader-overlay');
     const preloaderSwitch = document.getElementById('preloader-switch');
     
-    // If already seen, hide immediately and unlock body
+    // If already seen, do nothing (preloader already hidden by CSS)
     if (preloaderSeen === 'true') {
-        preloaderOverlay.style.display = 'none';
-        document.body.classList.remove('preloader-active');
-        return; // Exit early, don't run any other preloader code
+        return; // Exit early
     }
     
-    // First time visitor - show preloader and lock body scroll
+    // First time visitor - show preloader immediately
     document.body.classList.add('preloader-active');
     
     // Start preloading hero video immediately
