@@ -8,17 +8,80 @@
     <title>Nairoreel Productions – Visual Storytelling Studio</title>
     <meta name="description" content="We are Nairoreel Productions – a creative studio crafting captivating visuals through 3D, cinematography, and motion storytelling.">
     
-    <!-- CRITICAL: Prevent white flash & hide preloader for returning visitors -->
+    <!-- CRITICAL: Immediate preloader check and style -->
+    <script>
+        // Immediate check - runs before anything else
+        (function() {
+            if (sessionStorage.getItem('nairoreelPreloaderSeen') !== 'true') {
+                // First visit - immediately hide everything except preloader
+                document.documentElement.style.visibility = 'hidden';
+                document.documentElement.style.background = '#0a0a0a';
+            }
+        })();
+    </script>
+    
+    <!-- CRITICAL: Prevent any flash -->
     <style>
-        html, body {
+        /* Base styles to prevent flash */
+        html {
+            background-color: #0a0a0a;
+            visibility: visible; /* Will be overridden by script if needed */
+        }
+        
+        body {
             background-color: #0a0a0a;
             margin: 0;
             padding: 0;
+            opacity: 0;
+            animation: bodyFadeIn 0.3s ease-out 0.1s forwards;
+        }
+        
+        @keyframes bodyFadeIn {
+            to { opacity: 1; }
+        }
+        
+        /* Preloader should be visible immediately on first visit */
+        .preloader-overlay {
+            opacity: 1 !important;
+            display: flex !important;
+        }
+        
+        /* Hide main content initially if preloader is active */
+        body.preloader-active > *:not(.preloader-overlay) {
+            opacity: 0;
+        }
+        
+        /* After preloader is done, show content */
+        body:not(.preloader-active) > *:not(.preloader-overlay) {
+            opacity: 1;
+            transition: opacity 0.5s ease-out;
         }
         
         /* Hide preloader immediately if already seen this session */
         body:not(.preloader-active) .preloader-overlay {
             display: none !important;
+        }
+        
+        /* Mobile video fix - ensure video container has proper sizing */
+        @media (max-width: 768px) {
+            .hero-video-bg {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url('assets/home/home-hero-poster.png');
+                background-size: cover;
+                background-position: center;
+            }
+            
+            .hero-video-bg video {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                -webkit-playsinline: true;
+                playsinline: true;
+            }
         }
     </style>
     
@@ -83,9 +146,12 @@
     <!-- Hero Section with Video Background -->
     <header class="hero-section">
         <div class="hero-video-bg">
-            <video autoplay loop muted playsinline poster="assets/home/home-hero-poster.png">
-             <source src="assets/home/kfc hero.mp4" type="video/mp4">
-           </video>
+            <!-- Added webkit-playsinline for older iOS versions -->
+            <video autoplay loop muted playsinline webkit-playsinline poster="assets/home/home-hero-poster.png">
+                <source src="assets/home/kfc hero.mp4" type="video/mp4">
+                <!-- Fallback message for browsers that don't support video -->
+                Your browser does not support the video tag.
+            </video>
             <div class="hero-overlay"></div>
         </div>
         <div class="hero-content">
@@ -238,5 +304,13 @@
     
     <!-- Main Scripts - Your existing hamburger menu and other functionality -->
     <script src="js/main.js"></script>
+    
+    <!-- Restore visibility after everything loads -->
+    <script>
+        // This runs after all scripts load
+        window.addEventListener('load', function() {
+            document.documentElement.style.visibility = 'visible';
+        });
+    </script>
 </body>
 </html>
