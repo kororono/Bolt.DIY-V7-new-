@@ -44,6 +44,9 @@
             return;
         }
         
+        // Check if we're on a mobile device
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        
         // Check if video can play through without buffering
         const checkVideoReady = () => {
             if (heroVideo.readyState >= 3) { // HAVE_FUTURE_DATA or HAVE_ENOUGH_DATA
@@ -61,8 +64,18 @@
         // Check immediately in case it's already loaded
         checkVideoReady();
         
-        // Force video to start loading
-        heroVideo.load();
+        // IMPORTANT: Only force load on desktop, not mobile
+        // Mobile devices have stricter autoplay policies
+        if (!isMobile) {
+            // Force video to start loading only on desktop
+            heroVideo.load();
+        } else {
+            // On mobile, just mark as ready after a short delay
+            // This allows the video to load naturally without interference
+            setTimeout(() => {
+                videoReady = true;
+            }, 500);
+        }
     }
     
     // Handle switch click

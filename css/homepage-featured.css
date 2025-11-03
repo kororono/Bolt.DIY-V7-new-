@@ -29,6 +29,14 @@
     height: 100%;
     object-fit: cover;
 }
+/*mobile responsive css for hero video poster*/
+@media (max-width: 768px) {
+    .hero-video-bg {
+        background-image: url('assets/home/home-hero-poster.png');
+        background-size: cover;
+        background-position: center;
+    }
+}
 
 /* Hero Overlay */
 .hero-overlay {
