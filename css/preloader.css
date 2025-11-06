@@ -299,7 +299,7 @@ body.preloader-active {
     }
     
     .preloader-power-text {
-        font-size: 0.9rem;
-        margin-top: 3rem;
+        font-size: 0.85rem;
+        margin-top: 2.5rem;
     }
 }
