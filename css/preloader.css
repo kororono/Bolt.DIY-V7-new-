@@ -49,7 +49,7 @@
     text-transform: uppercase;
     opacity: 0;
     animation: preloaderFadeInPulse 2s ease-out 1s forwards;
-    margin-top: 5rem;
+    margin-top: 3.5rem;
 }
 
 @keyframes preloaderFadeIn {
