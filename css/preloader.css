@@ -30,26 +30,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0rem;
     opacity: 0;
     animation: preloaderFadeIn 2s ease-out 0.5s forwards;
 }
 
 .preloader-logo-img {
-    width: 12rem; /* Adjust size as needed */
+    width: 17rem; /* Adjust size as needed */
     height: auto;
     object-fit: contain;
 }
 
 /* Power Text */
 .preloader-power-text {
-    font-size: 0.9rem;
+    font-size: 5rem;
     letter-spacing: 0.2em;
     color: #666;
     text-transform: uppercase;
     opacity: 0;
     animation: preloaderFadeInPulse 2s ease-out 1s forwards;
-    margin-top: 1.5rem;
+    margin-top: 5rem;
 }
 
 @keyframes preloaderFadeIn {
