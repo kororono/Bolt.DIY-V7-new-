@@ -45,20 +45,20 @@
 
 /* Project content */
 .project-content {
-    padding: 1rem 0;
+    padding: 0rem;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 1rem;
 }
 
 /* Project details */
 .project-details {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
+    gap: 1rem;
     margin-bottom: 1.5rem;
     border-bottom: 1px solid rgba(255,255,255,0.1);
     padding-bottom: 1rem;
