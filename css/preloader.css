@@ -36,20 +36,20 @@
 }
 
 .preloader-logo-img {
-    width: 17rem; /* Adjust size as needed */
+    width: 14rem; /* Adjust size as needed */
     height: auto;
     object-fit: contain;
 }
 
 /* Power Text */
 .preloader-power-text {
-    font-size: 1.2rem;
+    font-size: .9rem;
     letter-spacing: 0.2em;
     color: #666;
     text-transform: uppercase;
     opacity: 0;
     animation: preloaderFadeInPulse 2s ease-out 1s forwards;
-    margin-top: 3.5rem;
+    margin-top: 3rem;
 }
 
 @keyframes preloaderFadeIn {
