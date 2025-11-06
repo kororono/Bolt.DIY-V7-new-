@@ -291,7 +291,7 @@ body.preloader-active {
 /* Responsive */
 @media (max-width: 768px) {
     .preloader-header {
-        margin-bottom: 1rem;
+        margin-bottom: orem;
     }
     
     .preloader-logo-img {
