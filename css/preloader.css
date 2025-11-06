@@ -30,13 +30,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     opacity: 0;
     animation: preloaderFadeIn 2s ease-out 0.5s forwards;
 }
 
 .preloader-logo-img {
-    width: 10rem; /* Adjust size as needed */
+    width: 12rem; /* Adjust size as needed */
     height: auto;
     object-fit: contain;
 }
@@ -295,11 +295,11 @@ body.preloader-active {
     }
     
     .preloader-logo-img {
-        width: 4.5rem; /* Smaller on mobile */
+        width: 10rem; /* Smaller on mobile */
     }
     
     .preloader-power-text {
         font-size: 0.8rem;
-        margin-top: 1.2rem;
+        margin-top: 2rem;
     }
 }
