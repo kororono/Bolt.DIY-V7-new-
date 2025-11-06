@@ -836,7 +836,7 @@ header, section {
 
 /* Project Details */
 .project-details {
-    padding: 40px 20px;
+    padding: 15px 10px;
     max-width: 1200px;
     margin: 0 auto;
     border-bottom: 1px solid var(--border);
